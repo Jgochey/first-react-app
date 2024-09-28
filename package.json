@@ -1,7 +1,8 @@
 {
-  "name": "nextjs-app-router-with-firebase-auth",
+  "name": "random-useless-facts",
   "version": "0.1.0",
   "private": true,
+  "author": "Josh Gochey",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
