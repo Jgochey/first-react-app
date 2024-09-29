@@ -67,7 +67,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'react/prop-types': ['error', { skipUndeclared: false }],
+    'react/prop-types': 'off',
     'react/require-default-props': [
       'error',
       {

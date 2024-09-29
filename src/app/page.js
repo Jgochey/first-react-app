@@ -6,8 +6,7 @@
 // import { signOut } from '@/utils/auth'; // anything in the src dir, you can use the @ instead of relative paths
 import { useAuth } from '@/utils/context/authContext';
 import { useEffect, useState } from 'react';
-
-const dbUrl = 'https://random-useless-facts-b0ad3-default-rtdb.firebaseio.com';
+import { postFact, updateFact } from '../api/facts';
 
 function Home() {
   const [uselessFact, setUselessFact] = useState({});
@@ -26,15 +25,12 @@ function Home() {
     const obj = {
       userId: user.uid,
       text: uselessFact.text,
+      answer: val,
     };
 
-    await fetch(`${dbUrl}/response${val}.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(obj),
-    });
+    const response = await postFact(obj, val);
+    await updateFact({ firebaseKey: response.name }, val);
+
     fetchFact();
     return obj;
   };
